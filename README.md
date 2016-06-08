@@ -20,18 +20,18 @@ Then just do something like this, to launch a proxy for Torrent-TV:
 1. Build the image.
    
   ```
-  docker build -t ikatson/aceproxy git://github.com/ikatson/docker-acestream-proxy.git
+  docker build -t ikatson/aceproxy git://github.com/asdaru/docker-acestream-proxy.git
   ```
 
   OR download the binary one, this is faster
   
   ```
-  docker pull ikatson/aceproxy:latest
+  docker pull asdaru/aceproxy:latest
   ```
 2. Run the TorrentTV proxy with your key.
   
   ```
-  docker run -t -p 8000:8000 ikatson/aceproxy
+  docker run -t -p 8000:8000 asdaru/aceproxy
   ```
 3. Read AceProxy manual for usage instructions: https://github.com/ValdikSS/aceproxy/wiki.
 
@@ -48,3 +48,11 @@ Then paste this URL into your player:
 ```
 http://[SERVER_IP]:8000/ttvplaylist/ttvplaylist.m3u
 ```
+
+Usage with telik.com
+---------------------
+
+Paste this URL into your player:
+```
+http://[SERVER_IP]:8000/torrent-telik/?type=ttv
+

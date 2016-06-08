@@ -10,16 +10,18 @@ RUN echo 'deb http://repo.acestream.org/ubuntu/ precise main' > /etc/apt/sources
 RUN wget -q -O - http://repo.acestream.org/keys/acestream.public.key | apt-key add -
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y
 
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y acestream-engine vlc-nox python-gevent
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y acestream-engine vlc-nox python-gevent python-dev gcc
+
+RUN wget https://bootstrap.pypa.io/get-pip.py && python get-pip.py && pip install psutil
 
 RUN mkdir -p /var/run/sshd
 RUN mkdir -p /var/log/supervisor
 
 RUN adduser --disabled-password --gecos "" tv
 
-RUN cd /tmp/ && wget https://github.com/ValdikSS/aceproxy/archive/6dff4771c3.zip -O master.zip
+RUN cd /tmp/ && wget https://github.com/ValdikSS/aceproxy/archive/master.zip
 RUN cd /tmp/ && unzip master.zip -d /home/tv/
-RUN mv /home/tv/aceproxy-* /home/tv/aceproxy-master
+#RUN mv /home/tv/aceproxy-* /home/tv/aceproxy-master
 
 RUN echo 'root:password' |chpasswd
 
